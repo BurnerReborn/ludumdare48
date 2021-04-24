@@ -14,7 +14,7 @@ TagManager:
   - Water
   - UI
   - 
-  - 
+  - Ground2
   - Ground
   - Player
   - Platform
@@ -45,6 +45,9 @@ TagManager:
     locked: 0
   - name: World
     uniqueID: 2542385115
+    locked: 0
+  - name: World2
+    uniqueID: 3501067181
     locked: 0
   - name: Default
     uniqueID: 0

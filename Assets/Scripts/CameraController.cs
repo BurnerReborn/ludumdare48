@@ -17,6 +17,9 @@ public class CameraController : MonoBehaviour
     //private float lastXPos;
     private Vector2 lastPos;
 
+    /// a global running clock of the scene, updating each frame
+    public static float Clock { get; private set;}
+
     private void Awake()
     {
         instance = this;
@@ -50,5 +53,7 @@ public class CameraController : MonoBehaviour
             //lastXPos = transform.position.x;
             lastPos = transform.position;
         }
+
+        CameraController.Clock += Time.deltaTime;
     }
 }

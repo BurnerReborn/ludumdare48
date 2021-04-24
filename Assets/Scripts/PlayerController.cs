@@ -1,5 +1,6 @@
-﻿using System.Collections;
+﻿using System;
 using System.Collections.Generic;
+using FMOD.Studio;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask m_isGrounded;
 
     private bool isGrounded;
+
 
     private bool canDoubleJump;
 
@@ -52,7 +54,6 @@ public class PlayerController : MonoBehaviour
         {
             if (knockBackCounter <= 0)
             {
-
                 theRB.velocity = new Vector2(m_moveSpeed * Input.GetAxis("Horizontal"), theRB.velocity.y);
 
                 isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, .2f, m_isGrounded);
@@ -64,20 +65,20 @@ public class PlayerController : MonoBehaviour
 
                 if (Input.GetButtonDown("Jump"))
                 {
-                    if (isGrounded)
-                    {
-                        theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
-                        AudioManager.instance.PlaySFX(10);
-                    }
-                    else
-                    {
-                        if (canDoubleJump)
-                        {
-                            theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
-                            canDoubleJump = false;
-                            AudioManager.instance.PlaySFX(10);
-                        }
-                    }
+                    _DoJump();
+                }
+
+                if (Input.GetKeyDown(KeyCode.Q)) {
+                    _DoJump();
+                    transform.position -= new Vector3(0,0, LayerManager.instance.depthUnit);
+                    Debug.LogFormat("[{0}] You pressed Q! (z={1})", CameraController.Clock, transform.position.z);
+                    LayerManager.instance.onLayerTransition();
+                }
+                else if (Input.GetKeyDown(KeyCode.E)) {
+                    _DoJump();
+                    transform.position += new Vector3(0, 0, LayerManager.instance.depthUnit);
+                    Debug.LogFormat("[{0}] You pressed E! (z={1})", CameraController.Clock, transform.position.z);
+                    LayerManager.instance.onLayerTransition();
                 }
 
                 if (theRB.velocity.x < 0)
@@ -101,11 +102,28 @@ public class PlayerController : MonoBehaviour
                     theRB.velocity = new Vector2(knockBackForce, theRB.velocity.y);
                 }
             }
-
         }
 
         anim.SetFloat("moveSpeed", Mathf.Abs( theRB.velocity.x));
         anim.SetBool("isGrounded", isGrounded);
+    }
+
+    private void _DoJump()
+    {
+        if (isGrounded)
+        {
+            theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
+            AudioManager.instance.PlaySFX(10);
+        }
+        else
+        {
+            if (canDoubleJump)
+            {
+                theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
+                canDoubleJump = false;
+                AudioManager.instance.PlaySFX(10);
+            }
+        }
     }
 
     public void KnockBack()
@@ -120,5 +138,13 @@ public class PlayerController : MonoBehaviour
     {
         theRB.velocity = new Vector2(theRB.velocity.x, bounceForce);
         AudioManager.instance.PlaySFX(10);
+    }
+
+    public bool HasJumped() {
+        // Debug.LogFormat("[{0}] playerController: isGrounded: {1} velocity.y: {2}", 
+        //                 CameraController.instance.Clock, isGrounded, theRB.velocity.y);
+        bool res = !isGrounded && theRB.velocity.y > 0.0f;
+
+        return res;
     }
 }
