@@ -141,11 +141,12 @@ public class PlayerController : MonoBehaviour
                 // DoJump();
 
                 // flip the object based on their movement direction
-                if (m_enableManualVelocityControl && _velocity < 0 || theRB.velocity.x < 0)
+                float velocity_epsilon = 0.001f;
+                if (m_enableManualVelocityControl && _velocity < 0 || theRB.velocity.x < -velocity_epsilon)
                 {
                     theSR.flipX = true;
                 }
-                else if (m_enableManualVelocityControl && _velocity > 0 || theRB.velocity.x > 0)
+                else if (m_enableManualVelocityControl && _velocity > 0 || theRB.velocity.x > velocity_epsilon)
                 {
                     theSR.flipX = false;
                 }
