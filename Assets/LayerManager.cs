@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Analytics;
+using UnityEngine.Tilemaps;
 
 /// resoponsible for handling collisions between the player and the platforms on different layers
 public class LayerManager : MonoBehaviour
@@ -105,7 +106,8 @@ public class LayerManager : MonoBehaviour
 
         // Debug.LogFormat("[{0}] PlayerMask: {1}, Ground2 Mask: {2}", CameraController.Clock, LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ground2"));
         foreach (var comp in m_nullableComponents) {
-            bool sameLayer = comp.transform.position.z == posZ;
+            float dz = comp.transform.position.z - posZ;
+            bool sameLayer = dz == 0;
 
             // if (sameLayer)
             //     Debug.LogFormat("[{0}] {1} Player on my layer! (z={2})", 
@@ -119,6 +121,17 @@ public class LayerManager : MonoBehaviour
                 comp.colliderMask &= ~(1<<LayerMask.NameToLayer("Player"));
             else
                 comp.colliderMask |= 1<<LayerMask.NameToLayer("Player");
+
+            // setup the depth of that layer
+            Tilemap tm = comp.gameObject.GetComponent<Tilemap>();
+            SpriteRenderer sr = comp.gameObject.GetComponent<SpriteRenderer>();
+            float alpha = 1 - (dz / depthUnit) / ((maxZ - minZ) / depthUnit);
+            if (alpha == 0) alpha = 0.3f;
+            if (tm != null) {
+                tm.color = new Color(tm.color.r, tm.color.g, tm.color.b, alpha);
+            } else if (sr != null) {
+                sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, alpha);
+            }
 
         }
 
