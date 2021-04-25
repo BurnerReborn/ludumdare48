@@ -19496,6 +19496,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   depthUnit: 3
+  respawnZ: 0
+  minZ: -3
+  maxZ: 3
 --- !u!1001 &466559153264538279
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19696,10 +19699,20 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1338754923290835212, guid: 8e86861e3991a71468f69b500c430b2d,
+        type: 3}
+      propertyPath: orthographic
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1338754923290835212, guid: 8e86861e3991a71468f69b500c430b2d,
+        type: 3}
+      propertyPath: field of view
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 1338754923290835443, guid: 8e86861e3991a71468f69b500c430b2d,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -500
+      value: -9
       objectReference: {fileID: 0}
     - target: {fileID: 3346704054453610459, guid: 8e86861e3991a71468f69b500c430b2d,
         type: 3}

@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using FMOD.Studio;
+using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -73,13 +74,15 @@ public class PlayerController : MonoBehaviour
                     _DoJump();
                 }
 
-                if (Input.GetKeyDown(KeyCode.Q)) {
+                if (Input.GetKeyDown(KeyCode.Q) && 
+                         LayerManager.instance.CanTransitionLayer(transform.position, towards: true)) {
                     _DoJump();
                     transform.position -= new Vector3(0,0, LayerManager.instance.depthUnit);
                     Debug.LogFormat("[{0}] You pressed Q! (z={1})", CameraController.Clock, transform.position.z);
                     LayerManager.instance.onLayerTransition(transform.position.z);
                 }
-                else if (Input.GetKeyDown(KeyCode.E)) {
+                else if (Input.GetKeyDown(KeyCode.E) &&
+                         LayerManager.instance.CanTransitionLayer(transform.position, towards: false)) {
                     _DoJump();
                     transform.position += new Vector3(0, 0, LayerManager.instance.depthUnit);
                     Debug.LogFormat("[{0}] You pressed E! (z={1})", CameraController.Clock, transform.position.z);
