@@ -42,10 +42,12 @@ public class LayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (PlayerHealthController.instance.currentHealth <= 0) {
-            // on death, we want to reset all colliders to the new player coordinates
-            onLayerTransition(respawnZ);
-        }
+
+    }
+
+    public void OnPlayerRespawn() {
+        // on death, we want to reset all colliders to the new player coordinates
+        onLayerTransition(respawnZ);
     }
 
     /// checks      if the player can make a transition

@@ -87,9 +87,6 @@ public class PlayerController : MonoBehaviour
         theSR = GetComponent<SpriteRenderer>();
     }
 
-
-
-
     // Update is called once per frame
     void Update()
     {
