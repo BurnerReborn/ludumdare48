@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using FMOD.Studio;
+using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
     public static PlayerController instance;
 
     [SerializeField]
@@ -58,6 +61,7 @@ public class PlayerController : MonoBehaviour
 
     private bool isGrounded;
 
+
     private bool canDoubleJump;
 
     [Header("Control")]
@@ -83,6 +87,9 @@ public class PlayerController : MonoBehaviour
         theSR = GetComponent<SpriteRenderer>();
     }
 
+
+
+
     // Update is called once per frame
     void Update()
     {
@@ -106,12 +113,27 @@ public class PlayerController : MonoBehaviour
                     fJumpPressedRemember = fJumpPressedRememberTime;
                 }
 
-                if (Input.GetButtonUp("Jump"))
+                if (Input.GetButtonUp("Jump") || Input.GetKeyUp(KeyCode.Q) || Input.GetKeyUp(KeyCode.E))
                 {
                     if (theRB.velocity.y > 0)
                     {
                         theRB.velocity = new Vector2(theRB.velocity.x, theRB.velocity.y * fCutJumpHeight);
                     }
+                }
+
+                if (Input.GetKeyDown(KeyCode.Q) && 
+                         LayerManager.instance.CanTransitionLayer(transform.position, towards: true)) {
+                    fJumpPressedRemember = fJumpPressedRememberTime; // start jump
+                    transform.position -= new Vector3(0,0, LayerManager.instance.depthUnit);
+                    Debug.LogFormat("[{0}] You pressed Q! (z={1})", CameraController.Clock, transform.position.z);
+                    LayerManager.instance.onLayerTransition(transform.position.z);
+                }
+                else if (Input.GetKeyDown(KeyCode.E) &&
+                         LayerManager.instance.CanTransitionLayer(transform.position, towards: false)) {
+                    fJumpPressedRemember = fJumpPressedRememberTime; // start jump
+                    transform.position += new Vector3(0, 0, LayerManager.instance.depthUnit);
+                    Debug.LogFormat("[{0}] You pressed E! (z={1})", CameraController.Clock, transform.position.z);
+                    LayerManager.instance.onLayerTransition(transform.position.z);
                 }
 
                 if ((fJumpPressedRemember > 0) && (fGroundedRemember > 0))
@@ -163,7 +185,6 @@ public class PlayerController : MonoBehaviour
                     theRB.velocity = new Vector2(knockBackForce, theRB.velocity.y);
                 }
             }
-
         }
 
         anim.SetFloat("moveSpeed", (m_enableManualVelocityControl) 
@@ -172,7 +193,12 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isGrounded", isGrounded);
     }
 
-    private void DoJump()
+    private void DoJump() {
+
+        fJumpPressedRemember = fJumpPressedRememberTime;
+    }
+
+    private void DoJumpOld()
     {
         
         if (isGrounded)
@@ -271,5 +297,13 @@ public class PlayerController : MonoBehaviour
     {
         theRB.velocity = new Vector2(theRB.velocity.x, bounceForce);
         AudioManager.instance.PlaySFX(10);
+    }
+
+    public bool HasJumped() {
+        // Debug.LogFormat("[{0}] playerController: isGrounded: {1} velocity.y: {2}", 
+        //                 CameraController.instance.Clock, isGrounded, theRB.velocity.y);
+        bool res = !isGrounded && theRB.velocity.y > 0.0f;
+
+        return res;
     }
 }

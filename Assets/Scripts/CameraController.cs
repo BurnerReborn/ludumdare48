@@ -1,5 +1,6 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Versioning;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -16,6 +17,9 @@ public class CameraController : MonoBehaviour
 
     //private float lastXPos;
     private Vector2 lastPos;
+
+    /// a global running clock of the scene, updating each frame
+    public static float Clock { get; private set;}
 
     private void Awake()
     {
@@ -40,16 +44,22 @@ public class CameraController : MonoBehaviour
 
         if (!stopFollow)
         {
-            transform.position = new Vector3(target.position.x, Mathf.Clamp(target.position.y, minHeight, maxHeight), transform.position.z);
+            // TODO camera: replaced for perspective view
+            // transform.position = new Vector3(target.position.x, Mathf.Clamp(target.position.y, minHeight, maxHeight), transform.position.z);
+            // transform.position = new Vector3(target.position.x, Mathf.Clamp(target.position.y, minHeight, maxHeight), target.position.z - 3*LayerManager.instance.depthUnit);
+            transform.position = new Vector3(target.position.x, Mathf.Clamp(target.position.y, minHeight, maxHeight), target.position.z - 3*LayerManager.instance.depthUnit);
 
             //float amountToMoveX = transform.position.x - lastXPos;
             Vector2 amountToMove = new Vector2(transform.position.x - lastPos.x, transform.position.y - lastPos.y);
 
-            farBackground.position = farBackground.position + new Vector3(amountToMove.x, amountToMove.y, 0f);
-            middleBackground.position += new Vector3(amountToMove.x, amountToMove.y, 0f) * .5f;
+            float backgroundDepth = target.position.z - 2*LayerManager.instance.depthUnit; // always out of reach, but close enough
+            farBackground.position = farBackground.position + new Vector3(amountToMove.x, amountToMove.y, backgroundDepth/*0f*/);
+            middleBackground.position += new Vector3(amountToMove.x, amountToMove.y, backgroundDepth/*0f*/) * .5f;
 
             //lastXPos = transform.position.x;
             lastPos = transform.position;
         }
+
+        CameraController.Clock += Time.deltaTime;
     }
 }
