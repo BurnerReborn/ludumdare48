@@ -20,9 +20,8 @@ public class PlayerController : MonoBehaviour
     float fGroundedRemember = 0;
     [SerializeField]
     float fGroundedRememberTime = 0.25f;
-
-    [SerializeField]
-    float fHorizontalAcceleration = 1;
+    // [SerializeField]
+    // float fHorizontalAcceleration = 1;
     [SerializeField]
     [Range(0, 1)]
     float fHorizontalDampingBasic = 0.5f;
@@ -57,11 +56,6 @@ public class PlayerController : MonoBehaviour
 
     private float JumpDampening=0.1f;   
  
-     void FixedUpdate()
-     {
-     }
-
-
     public Transform groundCheckPoint;
     public LayerMask m_isGrounded;
 
@@ -152,6 +146,10 @@ public class PlayerController : MonoBehaviour
                 float fHorizontalVelocity = theRB.velocity.x;
                 fHorizontalVelocity += Input.GetAxisRaw("Horizontal");
 
+                // if (fHorizontalVelocity != 0.0f) {
+                //     Debug.Log("velocity: " + fHorizontalVelocity + " dT: " + Time.deltaTime);
+                // }
+
                 if (Mathf.Abs(Input.GetAxisRaw("Horizontal")) < 0.01f)
                     fHorizontalVelocity *= Mathf.Pow(1f - fHorizontalDampingWhenStopping, Time.deltaTime * 10f);
                 else if (Mathf.Sign(Input.GetAxisRaw("Horizontal")) != Mathf.Sign(fHorizontalVelocity))
@@ -165,11 +163,12 @@ public class PlayerController : MonoBehaviour
                 // DoJump();
 
                 // flip the object based on their movement direction
-                if (m_enableManualVelocityControl && _velocity < 0 || theRB.velocity.x < 0)
+                float velocity_epsilon = 0.001f;
+                if (m_enableManualVelocityControl && _velocity < 0 || theRB.velocity.x < -velocity_epsilon)
                 {
                     theSR.flipX = true;
                 }
-                else if (m_enableManualVelocityControl && _velocity > 0 || theRB.velocity.x > 0)
+                else if (m_enableManualVelocityControl && _velocity > 0 || theRB.velocity.x > velocity_epsilon)
                 {
                     theSR.flipX = false;
                 }
