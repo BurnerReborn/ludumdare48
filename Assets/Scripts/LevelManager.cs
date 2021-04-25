@@ -56,6 +56,8 @@ public class LevelManager : MonoBehaviour
 
         PlayerHealthController.instance.currentHealth = PlayerHealthController.instance.maxHealth;
         // UIController.instance.UpdateHealthDisplay();
+
+        LayerManager.instance.OnPlayerRespawn();
     }
 
     public void EndLevel()
