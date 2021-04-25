@@ -1,5 +1,6 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.Versioning;
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -23,6 +24,7 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        Application.targetFrameRate = 45;
     }
 
     // Start is called before the first frame update
@@ -42,7 +44,10 @@ public class CameraController : MonoBehaviour
 
         if (!stopFollow)
         {
-            transform.position = new Vector3(target.position.x, Mathf.Clamp(target.position.y, minHeight, maxHeight), transform.position.z);
+            // TODO camera: replaced for perspective view
+            // transform.position = new Vector3(target.position.x, Mathf.Clamp(target.position.y, minHeight, maxHeight), transform.position.z);
+            // transform.position = new Vector3(target.position.x, Mathf.Clamp(target.position.y, minHeight, maxHeight), target.position.z - 3*LayerManager.instance.depthUnit);
+            transform.position = new Vector3(target.position.x, Mathf.Clamp(target.position.y, minHeight, maxHeight), target.position.z - 3*LayerManager.instance.depthUnit);
 
             //float amountToMoveX = transform.position.x - lastXPos;
             Vector2 amountToMove = new Vector2(transform.position.x - lastPos.x, transform.position.y - lastPos.y);

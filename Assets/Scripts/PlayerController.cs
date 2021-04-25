@@ -1,11 +1,13 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using FMOD.Studio;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+
     public static PlayerController instance;
+
 
     [Header("Movement")]
 
@@ -47,6 +49,9 @@ public class PlayerController : MonoBehaviour
         theSR = GetComponent<SpriteRenderer>();
     }
 
+
+
+
     // Update is called once per frame
     void Update()
     {
@@ -72,13 +77,13 @@ public class PlayerController : MonoBehaviour
                     _DoJump();
                     transform.position -= new Vector3(0,0, LayerManager.instance.depthUnit);
                     Debug.LogFormat("[{0}] You pressed Q! (z={1})", CameraController.Clock, transform.position.z);
-                    LayerManager.instance.onLayerTransition();
+                    LayerManager.instance.onLayerTransition(transform.position.z);
                 }
                 else if (Input.GetKeyDown(KeyCode.E)) {
                     _DoJump();
                     transform.position += new Vector3(0, 0, LayerManager.instance.depthUnit);
                     Debug.LogFormat("[{0}] You pressed E! (z={1})", CameraController.Clock, transform.position.z);
-                    LayerManager.instance.onLayerTransition();
+                    LayerManager.instance.onLayerTransition(transform.position.z);
                 }
 
                 if (theRB.velocity.x < 0)
