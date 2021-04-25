@@ -320,17 +320,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9772716ffa6cce643899aac0228c30d7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_moveSpeed: 12
+  fJumpVelocity: 10
+  fJumpPressedRememberTime: 0.2
+  fGroundedRememberTime: 0.25
+  fHorizontalAcceleration: 15
+  fHorizontalDampingBasic: 0.1
+  fHorizontalDampingWhenStopping: 0.5
+  fHorizontalDampingWhenTurning: 0.5
+  fCutJumpHeight: 0.5
   theRB: {fileID: 7836575393662349988}
-  jumpForce: 12
   groundCheckPoint: {fileID: 7836575393111876506}
   m_isGrounded:
     serializedVersion: 2
     m_Bits: 1280
+  stopInput: 0
   knockBackLength: 0.25
   knockBackForce: 5
   bounceForce: 15
-  stopInput: 0
 --- !u!95 &7836575393662349979
 Animator:
   serializedVersion: 3
