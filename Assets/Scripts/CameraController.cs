@@ -20,6 +20,7 @@ public class CameraController : MonoBehaviour
     private void Awake()
     {
         instance = this;
+        Application.targetFrameRate = 45;
     }
 
     // Start is called before the first frame update
