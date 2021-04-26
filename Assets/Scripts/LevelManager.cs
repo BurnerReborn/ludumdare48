@@ -120,11 +120,11 @@ public class LevelManager : MonoBehaviour
     {
         platform.gameObject.SetActive(false);
         // AudioManager.instance.PlaySFX(8);
-        Debug.Log("cya in " + m_respawnTime);
+        // Debug.Log("cya in " + m_respawnTime);
 
         yield return new WaitForSeconds(m_respawnTime);
 
-        Debug.Log("hiii from " + m_respawnTime);
+        // Debug.Log("hiii from " + m_respawnTime);
 
         platform.gameObject.SetActive(true);
     }
