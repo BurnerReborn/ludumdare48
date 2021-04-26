@@ -20,6 +20,7 @@ public class LevelExit : MonoBehaviour
     {
         if(other.tag == "Player")
         {
+            Debug.Log("Victory Screen");
             LevelManager.instance.EndLevel();
         }
     }

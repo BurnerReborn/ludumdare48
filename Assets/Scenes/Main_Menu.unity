@@ -291,7 +291,7 @@ GameObject:
   - component: {fileID: 593040492}
   - component: {fileID: 593040491}
   m_Layer: 5
-  m_Name: Text
+  m_Name: Controls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -807,7 +807,7 @@ GameObject:
   - component: {fileID: 1040839685}
   - component: {fileID: 1040839684}
   m_Layer: 5
-  m_Name: Text
+  m_Name: controls text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -829,8 +829,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -348.22, y: -307}
-  m_SizeDelta: {x: 564.541, y: 306.4986}
+  m_AnchoredPosition: {x: -362.63058, y: -305.55396}
+  m_SizeDelta: {x: 581.28, y: 359.505}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1040839684
 MonoBehaviour:
@@ -876,8 +876,13 @@ MonoBehaviour:
     E=
     Move Forward
 
-    Use Layer Switching to move threw the level! Look out for the
-    faded platforms!'
+    Escape = Pause Screen
+
+    Use Layer Switching to move threw
+    the level! Look out for the faded platforms and use E to reach them!
+
+    If
+    a platform seems zoomed in try landing on it after pressing Q!'
 --- !u!222 &1040839685
 CanvasRenderer:
   m_ObjectHideFlags: 0

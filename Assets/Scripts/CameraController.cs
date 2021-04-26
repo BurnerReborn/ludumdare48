@@ -54,7 +54,7 @@ public class CameraController : MonoBehaviour
             Vector2 amountToMove = new Vector2(transform.position.x - lastPos.x, transform.position.y - lastPos.y);
 
             farBackground.position = farBackground.position + new Vector3(amountToMove.x, amountToMove.y, 0f);
-            middleBackground.position += new Vector3(amountToMove.x, amountToMove.y, 0f) * .5f;
+            middleBackground.position += new Vector3(amountToMove.x, amountToMove.y, 0f) * .9f;
 
             float backgroundDepth = transform.position.z + 120; // always out of reach, but close enough
             farBackground.position = new Vector3(farBackground.position.x, farBackground.position.y, backgroundDepth);

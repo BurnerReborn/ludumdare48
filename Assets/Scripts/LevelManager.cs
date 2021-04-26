@@ -11,7 +11,7 @@ public class LevelManager : MonoBehaviour
 
     public int gemsCollected;
 
-    public string levelToLoad;
+    public string Victory_Screen;
 
     public float timeInLevel;
 
@@ -108,7 +108,7 @@ public class LevelManager : MonoBehaviour
             PlayerPrefs.SetFloat(SceneManager.GetActiveScene().name + "_time", timeInLevel);
         }
 
-        SceneManager.LoadScene(levelToLoad);
+        SceneManager.LoadScene(Victory_Screen);
     }
 
     public void RespawnPlatform(GameObject platform, float m_respawnTime)
