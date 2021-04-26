@@ -4830,6 +4830,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Pack
       objectReference: {fileID: 0}
+    - target: {fileID: 4805616056225613585, guid: 8e86861e3991a71468f69b500c430b2d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4805616056303488972, guid: 8e86861e3991a71468f69b500c430b2d,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -4864,6 +4869,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: -18.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436569069324227653, guid: 8e86861e3991a71468f69b500c430b2d,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436569069365167933, guid: 8e86861e3991a71468f69b500c430b2d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -319
+      objectReference: {fileID: 0}
+    - target: {fileID: 5436569070489064638, guid: 8e86861e3991a71468f69b500c430b2d,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -110
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8e86861e3991a71468f69b500c430b2d, type: 3}
