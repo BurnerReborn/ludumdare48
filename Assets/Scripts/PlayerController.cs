@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using FMOD.Studio;
-using UnityEditor.IMGUI.Controls;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
