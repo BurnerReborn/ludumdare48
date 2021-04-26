@@ -60,19 +60,28 @@ public class AudioManager : MonoBehaviour
 
     public void PlayLevelVictory()
     {
-        bgm.Stop();
-        levelEndMusic.Play();
+        if (bgm != null)
+        {
+            bgm.Stop();
+            levelEndMusic.Play();
+        }
     }
 
     public void PlayBossMusic()
     {
-        bgm.Stop();
-        bossMusic.Play();
+        if (bgm != null)
+        {
+            bgm.Stop();
+            bossMusic.Play();
+        }
     }
 
     public void StopBossMusic()
     {
-        bossMusic.Stop();
-        bgm.Play();
+        if (bgm != null)
+        {
+            bossMusic.Stop();
+            bgm.Play();
+        }
     }
 }

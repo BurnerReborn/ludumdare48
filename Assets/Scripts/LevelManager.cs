@@ -108,7 +108,7 @@ public class LevelManager : MonoBehaviour
             PlayerPrefs.SetFloat(SceneManager.GetActiveScene().name + "_time", timeInLevel);
         }
 
-        SceneManager.LoadScene(Victory_Screen);
+        SceneManager.LoadScene(2);
     }
 
     public void RespawnPlatform(GameObject platform, float m_respawnTime)
