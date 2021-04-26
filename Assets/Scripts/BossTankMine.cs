@@ -28,7 +28,7 @@ public class BossTankMine : MonoBehaviour
 
             PlayerHealthController.instance.DealDamage();
 
-            AudioManager.instance.PlaySFX(3);
+            AudioManager.instance.PlaySFX(AudioManager.Sfx.EnemyExplode);
         }
     }
 
@@ -36,7 +36,7 @@ public class BossTankMine : MonoBehaviour
     {
         Destroy(gameObject);
 
-        AudioManager.instance.PlaySFX(3);
+        AudioManager.instance.PlaySFX(AudioManager.Sfx.EnemyExplode);
 
         Instantiate(explosion, transform.position, transform.rotation);
     }

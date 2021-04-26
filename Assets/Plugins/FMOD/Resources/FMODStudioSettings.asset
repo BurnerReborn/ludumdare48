@@ -330,8 +330,8 @@ MonoBehaviour:
   SwitchSettingsMigration: 1
   HasSourceProject: 1
   HasPlatforms: 1
-  sourceProjectPath: Assets/FMOD/ludum-dare-48_v1/ludum-dare-48_v1.fspro
-  sourceBankPath: Assets/FMOD/ludum-dare-48_v1/Build
+  sourceProjectPath: Assets/FMOD/ludum-dare-48_v2.fspro
+  sourceBankPath: Assets/FMOD/Build
   SourceBankPathUnformatted: 
   AutomaticEventLoading: 1
   BankLoadType: 0

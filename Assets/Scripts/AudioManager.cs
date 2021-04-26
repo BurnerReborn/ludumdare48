@@ -6,9 +6,26 @@ public class AudioManager : MonoBehaviour
 {
     public static AudioManager instance;
 
-    public AudioSource[] soundEffects;
+    public FMODUnity.StudioEventEmitter[] soundEffects;
 
-    public AudioSource bgm, levelEndMusic, bossMusic;
+    public FMODUnity.StudioEventEmitter bgm, levelEndMusic, bossMusic;
+
+    public enum Sfx {
+        BossHit,
+        BossImpact,
+        BossShot,
+        EnemyExplode,
+        LevelSelected,
+        MapMovement,
+        PickupGem,
+        PicupHealth,
+        PlayerDeath,
+        PlayerHurt,
+        PlayerJump,
+        WarpJingle,
+        PlayerLand,
+        PlayerMove
+    }
 
     private void Awake()
     {
@@ -27,13 +44,18 @@ public class AudioManager : MonoBehaviour
         
     }
 
-    public void PlaySFX(int soundToPlay)
+    public void PlaySFX(Sfx soundToPlay)
     {
-        soundEffects[soundToPlay].Stop();
+        Debug.Log("whyyyy " + soundToPlay);
+        var sfx = soundEffects[(int)soundToPlay];
+        if (sfx == null)
+            return;
 
-        soundEffects[soundToPlay].pitch = Random.Range(.9f, 1.1f);
+        Debug.Log("whyyyy " + sfx);
 
-        soundEffects[soundToPlay].Play();
+        // sfx.Stop();
+        // soundEffects[soundToPlay].pitch = Random.Range(.9f, 1.1f);
+        sfx.Play();
     }
 
     public void PlayLevelVictory()

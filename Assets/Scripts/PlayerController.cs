@@ -77,6 +77,9 @@ public class PlayerController : MonoBehaviour
     private Animator anim;
     private SpriteRenderer theSR;
 
+    private float sfxTimer;
+    private bool falling;
+
     private void Awake()
     {
         instance = this;
@@ -100,6 +103,15 @@ public class PlayerController : MonoBehaviour
                 Vector2 v2GroundedBoxCheckScale = (Vector2)transform.localScale + new Vector2(-0.02f, 0);
                 isGrounded = Physics2D.OverlapCircle(groundCheckPoint.position, .2f, m_isGrounded);
 
+                // used for sfx to only play once
+                if (isGrounded)
+                    falling = false;
+
+                if (sfxTimer == 0) {
+                    sfxTimer = CameraController.Clock;
+                }
+                
+
                 fGroundedRemember -= Time.deltaTime;
                 if (isGrounded)
                 {
@@ -117,13 +129,23 @@ public class PlayerController : MonoBehaviour
                     if (theRB.velocity.y > 0)
                     {
                         theRB.velocity = new Vector2(theRB.velocity.x, theRB.velocity.y * fCutJumpHeight);
+                        AudioManager.instance.PlaySFX(AudioManager.Sfx.PlayerJump);
                     }
+                }
+
+                if (!isGrounded && Math.Abs(theRB.velocity.y) > 0.01 && theRB.velocity.y < 0) {
+                    if (!falling)
+                        AudioManager.instance.PlaySFX(AudioManager.Sfx.PlayerLand);
+                    falling = true; // only do once
                 }
 
                 if (Input.GetKeyDown(KeyCode.Q) && 
                          LayerManager.instance.CanTransitionLayer(transform.position, towards: true)) {
                     transitionedLayer = true;
-                    if (fJumpPressedRemember <= 0) fJumpPressedRemember = fJumpPressedRememberTime;
+                    if (fJumpPressedRemember <= 0)  {
+                        // initiate jump
+                        fJumpPressedRemember = fJumpPressedRememberTime;
+                    }
                     transform.position -= new Vector3(0,0, LayerManager.instance.depthUnit);
                     // Debug.LogFormat("[{0}] You pressed Q! (z={1})", CameraController.Clock, transform.position.z);
                     LayerManager.instance.onLayerTransition(transform.position.z);
@@ -131,7 +153,10 @@ public class PlayerController : MonoBehaviour
                 else if (Input.GetKeyDown(KeyCode.E) &&
                          LayerManager.instance.CanTransitionLayer(transform.position, towards: false)) {
                     transitionedLayer = true;
-                    if (fJumpPressedRemember <= 0) fJumpPressedRemember = fJumpPressedRememberTime;
+                    if (fJumpPressedRemember <= 0) {
+                        // initiate jump
+                        fJumpPressedRemember = fJumpPressedRememberTime;
+                    }
                     transform.position += new Vector3(0, 0, LayerManager.instance.depthUnit);
                     // Debug.LogFormat("[{0}] You pressed E! (z={1})", CameraController.Clock, transform.position.z);
                     LayerManager.instance.onLayerTransition(transform.position.z);
@@ -168,10 +193,18 @@ public class PlayerController : MonoBehaviour
                 if (m_enableManualVelocityControl && _velocity < 0 || theRB.velocity.x < -velocity_epsilon)
                 {
                     theSR.flipX = true;
+                    if (CameraController.Clock - sfxTimer > 0.5f) {
+                        sfxTimer = 0f;
+                        AudioManager.instance.PlaySFX(AudioManager.Sfx.PlayerMove);
+                    }
                 }
                 else if (m_enableManualVelocityControl && _velocity > 0 || theRB.velocity.x > velocity_epsilon)
                 {
                     theSR.flipX = false;
+                    if (CameraController.Clock - sfxTimer > 0.5f) {
+                        sfxTimer = 0f;
+                        AudioManager.instance.PlaySFX(AudioManager.Sfx.PlayerMove);
+                    }
                 }
             }
             else
@@ -217,7 +250,7 @@ public class PlayerController : MonoBehaviour
                 } else {
                     theRB.velocity = new Vector2(theRB.velocity.x, jumpForce);
                 }
-                AudioManager.instance.PlaySFX(10);
+                AudioManager.instance.PlaySFX(AudioManager.Sfx.PlayerJump);
             }
             else
             {
@@ -229,7 +262,7 @@ public class PlayerController : MonoBehaviour
                         _jumpVelocity = jumpForce;
                     }
                     canDoubleJump = false;
-                    AudioManager.instance.PlaySFX(10);
+                    AudioManager.instance.PlaySFX(AudioManager.Sfx.PlayerJump);
                 }
             }
         }
@@ -297,7 +330,7 @@ public class PlayerController : MonoBehaviour
     public void Bounce()
     {
         theRB.velocity = new Vector2(theRB.velocity.x, bounceForce);
-        AudioManager.instance.PlaySFX(10);
+        AudioManager.instance.PlaySFX(AudioManager.Sfx.PlayerJump);
     }
 
     public bool HasJumped() {

@@ -6771,6 +6771,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -18.2
       objectReference: {fileID: 0}
+    - target: {fileID: 4806608575472440765, guid: 8e86861e3991a71468f69b500c430b2d,
+        type: 3}
+      propertyPath: PlayEvent
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5436569069324227653, guid: 8e86861e3991a71468f69b500c430b2d,
         type: 3}
       propertyPath: m_IsActive

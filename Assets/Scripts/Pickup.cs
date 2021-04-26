@@ -37,7 +37,7 @@ public class Pickup : MonoBehaviour
 
                 UIController.instance.UpdateGemCount();
 
-                AudioManager.instance.PlaySFX(6);
+                AudioManager.instance.PlaySFX(AudioManager.Sfx.PickupGem);
             }
 
             if(isHeal)
@@ -51,7 +51,7 @@ public class Pickup : MonoBehaviour
 
                     Instantiate(pickupEffect, transform.position, transform.rotation);
 
-                    AudioManager.instance.PlaySFX(7);
+                    AudioManager.instance.PlaySFX(AudioManager.Sfx.PicupHealth);
                 }
             }
         }
