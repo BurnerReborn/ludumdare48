@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{706601ff-9efd-47c8-9fb8-b6ae60d33c61}">
+		<property name="assetPath">
+			<value>sfx/gameplay/sfx_platform_rumble.wav</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>1</value>
+		</property>
+		<property name="length">
+			<value>4</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e9341016-a350-4bb1-b282-aee87e3095ba}</destination>
+		</relationship>
+	</object>
+</objects>

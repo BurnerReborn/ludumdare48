@@ -36,6 +36,8 @@ public class PlayerController : MonoBehaviour
     [Range(0, 1)]
     float fCutJumpHeight = 0.5f;
 
+    private bool transitionedLayer;
+
 
     public Rigidbody2D theRB;
 
@@ -120,14 +122,16 @@ public class PlayerController : MonoBehaviour
 
                 if (Input.GetKeyDown(KeyCode.Q) && 
                          LayerManager.instance.CanTransitionLayer(transform.position, towards: true)) {
-                    fJumpPressedRemember = fJumpPressedRememberTime; // start jump
+                    transitionedLayer = true;
+                    if (fJumpPressedRemember <= 0) fJumpPressedRemember = fJumpPressedRememberTime;
                     transform.position -= new Vector3(0,0, LayerManager.instance.depthUnit);
                     Debug.LogFormat("[{0}] You pressed Q! (z={1})", CameraController.Clock, transform.position.z);
                     LayerManager.instance.onLayerTransition(transform.position.z);
                 }
                 else if (Input.GetKeyDown(KeyCode.E) &&
                          LayerManager.instance.CanTransitionLayer(transform.position, towards: false)) {
-                    fJumpPressedRemember = fJumpPressedRememberTime; // start jump
+                    transitionedLayer = true;
+                    if (fJumpPressedRemember <= 0) fJumpPressedRemember = fJumpPressedRememberTime;
                     transform.position += new Vector3(0, 0, LayerManager.instance.depthUnit);
                     Debug.LogFormat("[{0}] You pressed E! (z={1})", CameraController.Clock, transform.position.z);
                     LayerManager.instance.onLayerTransition(transform.position.z);
