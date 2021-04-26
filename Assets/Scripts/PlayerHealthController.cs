@@ -66,7 +66,7 @@ public class PlayerHealthController : MonoBehaviour
 
                 PlayerController.instance.KnockBack();
 
-                AudioManager.instance.PlaySFX(9);
+                AudioManager.instance.PlaySFX(AudioManager.Sfx.PlayerHurt);
             }
 
             // no longer necessary, we don't have health

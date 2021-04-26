@@ -40,7 +40,7 @@ public class LSManager : MonoBehaviour
 
     public IEnumerator LoadLevelCo()
     {
-        AudioManager.instance.PlaySFX(4);
+        AudioManager.instance.PlaySFX(AudioManager.Sfx.LevelSelected);
 
         LSUIController.instance.FadeToBlack();
 

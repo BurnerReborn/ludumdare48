@@ -40,7 +40,7 @@ public class LevelManager : MonoBehaviour
     private IEnumerator RespawnCo()
     {
         PlayerController.instance.gameObject.SetActive(false);
-        AudioManager.instance.PlaySFX(8);
+        AudioManager.instance.PlaySFX(AudioManager.Sfx.PlayerDeath);
 
         yield return new WaitForSeconds(waitToRespawn - (1f / UIController.instance.fadeSpeed));
 

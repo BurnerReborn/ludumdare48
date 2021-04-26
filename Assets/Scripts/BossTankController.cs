@@ -148,7 +148,7 @@ public class BossTankController : MonoBehaviour
 
         anim.SetTrigger("Hit");
 
-        AudioManager.instance.PlaySFX(0);
+        AudioManager.instance.PlaySFX(AudioManager.Sfx.BossHit);
 
         BossTankMine[] mines = FindObjectsOfType<BossTankMine>();
         if(mines.Length > 0)
