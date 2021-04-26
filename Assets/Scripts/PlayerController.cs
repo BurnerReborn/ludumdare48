@@ -125,7 +125,7 @@ public class PlayerController : MonoBehaviour
                     transitionedLayer = true;
                     if (fJumpPressedRemember <= 0) fJumpPressedRemember = fJumpPressedRememberTime;
                     transform.position -= new Vector3(0,0, LayerManager.instance.depthUnit);
-                    Debug.LogFormat("[{0}] You pressed Q! (z={1})", CameraController.Clock, transform.position.z);
+                    // Debug.LogFormat("[{0}] You pressed Q! (z={1})", CameraController.Clock, transform.position.z);
                     LayerManager.instance.onLayerTransition(transform.position.z);
                 }
                 else if (Input.GetKeyDown(KeyCode.E) &&
@@ -133,7 +133,7 @@ public class PlayerController : MonoBehaviour
                     transitionedLayer = true;
                     if (fJumpPressedRemember <= 0) fJumpPressedRemember = fJumpPressedRememberTime;
                     transform.position += new Vector3(0, 0, LayerManager.instance.depthUnit);
-                    Debug.LogFormat("[{0}] You pressed E! (z={1})", CameraController.Clock, transform.position.z);
+                    // Debug.LogFormat("[{0}] You pressed E! (z={1})", CameraController.Clock, transform.position.z);
                     LayerManager.instance.onLayerTransition(transform.position.z);
                 }
 

@@ -117,10 +117,14 @@ public class LayerManager : MonoBehaviour
                             // CameraController.Clock, comp.gameObject.name, sameLayer, comp.colliderMask);
 
             // check for all platforms that we're on the same layer
-            if (!sameLayer)
+            if (!sameLayer) {
+
                 comp.colliderMask &= ~(1<<LayerMask.NameToLayer("Player"));
-            else
+                comp.gameObject.layer = LayerMask.NameToLayer("Ground2");
+            } else {
                 comp.colliderMask |= 1<<LayerMask.NameToLayer("Player");
+                comp.gameObject.layer = LayerMask.NameToLayer("Ground");
+            }
 
             // setup the depth of that layer
             Tilemap tm = comp.gameObject.GetComponent<Tilemap>();
