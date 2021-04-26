@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="MasterTagFolder" id="{f9a1b4ca-2a69-483d-90b2-ddc4cfcf191e}">
+		<property name="name">
+			<value>Master</value>
+		</property>
+		<relationship name="items">
+			<destination>{cf4b774a-1a7f-435c-912e-809c1a419cc0}</destination>
+			<destination>{e123816c-5857-4840-ba57-af7f4ab350b4}</destination>
+			<destination>{32870fd5-bd6c-40fb-9508-d57c0b3c0f8e}</destination>
+			<destination>{5e5226b1-4a05-4d39-bd63-c5a3674a7a99}</destination>
+			<destination>{3e548870-ba0f-4d16-90ce-bfc9c039b33b}</destination>
+			<destination>{1a8e5b2d-bdbc-4d89-9a36-ea9a9761e9f9}</destination>
+			<destination>{d2897ad7-a88b-4145-84aa-6c1959bc6659}</destination>
+		</relationship>
+	</object>
+	<object class="Tag" id="{cf4b774a-1a7f-435c-912e-809c1a419cc0}">
+		<property name="name">
+			<value>music</value>
+		</property>
+	</object>
+	<object class="Tag" id="{e123816c-5857-4840-ba57-af7f4ab350b4}">
+		<property name="name">
+			<value>gameplay</value>
+		</property>
+	</object>
+	<object class="Tag" id="{32870fd5-bd6c-40fb-9508-d57c0b3c0f8e}">
+		<property name="name">
+			<value>sfx</value>
+		</property>
+	</object>
+	<object class="Tag" id="{5e5226b1-4a05-4d39-bd63-c5a3674a7a99}">
+		<property name="name">
+			<value>player</value>
+		</property>
+	</object>
+	<object class="Tag" id="{3e548870-ba0f-4d16-90ce-bfc9c039b33b}">
+		<property name="name">
+			<value>ui</value>
+		</property>
+	</object>
+	<object class="Tag" id="{1a8e5b2d-bdbc-4d89-9a36-ea9a9761e9f9}">
+		<property name="name">
+			<value>platform</value>
+		</property>
+	</object>
+	<object class="Tag" id="{d2897ad7-a88b-4145-84aa-6c1959bc6659}">
+		<property name="name">
+			<value>ambience</value>
+		</property>
+	</object>
+</objects>

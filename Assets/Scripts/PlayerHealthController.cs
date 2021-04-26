@@ -92,7 +92,9 @@ public class PlayerHealthController : MonoBehaviour
     {
         if(other.gameObject.tag == "Platform")
         {
-            transform.parent = other.transform;
+            PlatformController pc = other.gameObject.GetComponent<PlatformController>();
+            if (pc == null || !pc.m_platformCanBreak)
+                transform.parent = other.transform;
         }
     }
 
@@ -100,7 +102,9 @@ public class PlayerHealthController : MonoBehaviour
     {
         if(other.gameObject.tag == "Platform")
         {
-            transform.parent = null;
+            PlatformController pc = other.gameObject.GetComponent<PlatformController>();
+            if (pc == null || !pc.m_platformCanBreak)
+                transform.parent = null;
         }
     }
 }

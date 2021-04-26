@@ -43,6 +43,7 @@ public class CameraController : MonoBehaviour
         transform.position = new Vector3(transform.position.x, clampedY, transform.position.z); */
 
         if (!stopFollow)
+
         {
             // TODO camera: replaced for perspective view
             // transform.position = new Vector3(target.position.x, Mathf.Clamp(target.position.y, minHeight, maxHeight), transform.position.z);
@@ -52,9 +53,12 @@ public class CameraController : MonoBehaviour
             //float amountToMoveX = transform.position.x - lastXPos;
             Vector2 amountToMove = new Vector2(transform.position.x - lastPos.x, transform.position.y - lastPos.y);
 
-            float backgroundDepth = target.position.z - 2*LayerManager.instance.depthUnit; // always out of reach, but close enough
-            farBackground.position = farBackground.position + new Vector3(amountToMove.x, amountToMove.y, backgroundDepth/*0f*/);
-            middleBackground.position += new Vector3(amountToMove.x, amountToMove.y, backgroundDepth/*0f*/) * .5f;
+            farBackground.position = farBackground.position + new Vector3(amountToMove.x, amountToMove.y, 0f);
+            middleBackground.position += new Vector3(amountToMove.x, amountToMove.y, 0f) * .5f;
+
+            float backgroundDepth = transform.position.z + 120; // always out of reach, but close enough
+            farBackground.position = new Vector3(farBackground.position.x, farBackground.position.y, backgroundDepth);
+            middleBackground.position = new Vector3(middleBackground.position.x, middleBackground.position.y, backgroundDepth);
 
             //lastXPos = transform.position.x;
             lastPos = transform.position;
