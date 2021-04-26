@@ -5,7 +5,7 @@
 			<value>sfx_player_climb</value>
 		</property>
 		<property name="outputFormat">
-			<value>1</value>
+			<value>0</value>
 		</property>
 		<relationship name="folder">
 			<destination>{3bf89d69-319f-4bb0-8a07-534d6222da0b}</destination>
@@ -113,6 +113,7 @@
 	<object class="MixerBusEffectChain" id="{ab8318b3-e4a4-4d28-a837-f76de56129fb}">
 		<relationship name="effects">
 			<destination>{1a360224-c778-419c-bd69-fc053011826e}</destination>
+			<destination>{3696335f-1aae-43b9-85e8-2b78f1451062}</destination>
 		</relationship>
 	</object>
 	<object class="MixerBusPanner" id="{35c18299-5af4-4a27-ad07-a1f61570c9c0}" />
@@ -132,6 +133,11 @@
 	</object>
 	<object class="MixerBusPanner" id="{44f087d0-0617-4921-b721-299a34e163cc}" />
 	<object class="MixerBusFader" id="{1a360224-c778-419c-bd69-fc053011826e}" />
+	<object class="PannerEffect" id="{3696335f-1aae-43b9-85e8-2b78f1451062}">
+		<property name="overridingOutputFormat">
+			<value>0</value>
+		</property>
+	</object>
 	<object class="AutomationPoint" id="{95974107-2f51-43e9-8ee5-b666d6d1a743}">
 		<property name="position">
 			<value>0.95999999999999996</value>

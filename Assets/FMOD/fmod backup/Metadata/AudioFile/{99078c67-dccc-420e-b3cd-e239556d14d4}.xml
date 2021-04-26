@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<objects serializationModel="Studio.02.01.00">
+	<object class="AudioFile" id="{99078c67-dccc-420e-b3cd-e239556d14d4}">
+		<property name="assetPath">
+			<value>ambience/ld48_sfx_ambience_bats.wav</value>
+		</property>
+		<property name="isStreaming">
+			<value>true</value>
+		</property>
+		<property name="frequencyInKHz">
+			<value>48</value>
+		</property>
+		<property name="channelCount">
+			<value>2</value>
+		</property>
+		<property name="length">
+			<value>112</value>
+		</property>
+		<relationship name="masterAssetFolder">
+			<destination>{e9341016-a350-4bb1-b282-aee87e3095ba}</destination>
+		</relationship>
+	</object>
+</objects>
