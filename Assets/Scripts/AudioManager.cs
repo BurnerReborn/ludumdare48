@@ -46,12 +46,12 @@ public class AudioManager : MonoBehaviour
 
     public void PlaySFX(Sfx soundToPlay)
     {
-        Debug.Log("whyyyy " + soundToPlay);
+        //Debug.Log("whyyyy " + soundToPlay);
         var sfx = soundEffects[(int)soundToPlay];
         if (sfx == null)
             return;
 
-        Debug.Log("whyyyy " + sfx);
+        //Debug.Log("whyyyy " + sfx);
 
         // sfx.Stop();
         // soundEffects[soundToPlay].pitch = Random.Range(.9f, 1.1f);

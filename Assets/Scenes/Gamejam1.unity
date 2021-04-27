@@ -505,6 +505,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 39
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &193460287
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 193460288}
+  - component: {fileID: 193460289}
+  m_Layer: 0
+  m_Name: BGMusic
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &193460288
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193460287}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2050084746}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &193460289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193460287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a6610d2e704f1648819acc8d7460285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CollisionTag: 
+  Event: event:/music/mus_gameplay
+  PlayEvent: 1
+  StopEvent: 0
+  AllowFadeout: 1
+  TriggerOnce: 0
+  Preload: 0
+  Params: []
+  OverrideAttenuation: 0
+  OverrideMinDistance: 0
+  OverrideMaxDistance: 0
 --- !u!1 &215589313
 GameObject:
   m_ObjectHideFlags: 0
@@ -44842,6 +44896,11 @@ PrefabInstance:
       propertyPath: xJumpRange
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2537531143466145230, guid: 8e86861e3991a71468f69b500c430b2d,
+        type: 3}
+      propertyPath: PlayEvent
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3346704054453610459, guid: 8e86861e3991a71468f69b500c430b2d,
         type: 3}
       propertyPath: bounceForce
@@ -45054,6 +45113,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 4805616057903611857, guid: 8e86861e3991a71468f69b500c430b2d,
+        type: 3}
+      propertyPath: bgm
+      value: 
+      objectReference: {fileID: 193460289}
     - target: {fileID: 4805616058178394248, guid: 8e86861e3991a71468f69b500c430b2d,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -68942,3 +69006,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1642c9b6d765e3b4a88fa1bce6029e3d, type: 3}
+--- !u!4 &2050084746 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4805616056993367388, guid: 8e86861e3991a71468f69b500c430b2d,
+    type: 3}
+  m_PrefabInstance: {fileID: 1324476320}
+  m_PrefabAsset: {fileID: 0}
