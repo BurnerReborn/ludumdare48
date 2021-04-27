@@ -19,6 +19,10 @@ public class LayerManager : MonoBehaviour
     [Tooltip("The furthest a player can jump in the x-direction. Disable check by setting this to 0")]
     public float xJumpRange;
 
+    FMOD.Studio.EventInstance bgEvent;
+
+
+
     public float minZ;
     public float maxZ;
 
@@ -103,6 +107,23 @@ public class LayerManager : MonoBehaviour
 
         if (m_nullableComponents == null)
             m_nullableComponents = GameObject.FindObjectsOfType<PlatformEffector2D>();
+
+        // the player changed layers, so let's update the music too
+        var musicLayer = posZ / depthUnit + 1;
+        if (musicLayer == 1 || musicLayer == 2) {
+          musicLayer = 1;
+        } else if (musicLayer == 3 || musicLayer == 4) {
+          musicLayer = 2;
+        } else if (musicLayer == 5 || musicLayer == 7) {
+          musicLayer = 4;
+        } else if (musicLayer >= 8 || musicLayer == 11) {
+          musicLayer = 5;
+        }
+        //if (bgEvent != null)
+            //bgEvent.setParameterByName("Layer", musicLayer);
+        //if (AudioManager.instance.bgm != null)
+        // SetParameter(AudioManager.instance.bgm, "Layer", musicLayer);
+        // AudioManager.instance.bgm.SetParameter("Layer", musicLayer);
 
         // Debug.LogFormat("[{0}] PlayerMask: {1}, Ground2 Mask: {2}", CameraController.Clock, LayerMask.NameToLayer("Player"), LayerMask.NameToLayer("Ground2"));
         foreach (var comp in m_nullableComponents) {
